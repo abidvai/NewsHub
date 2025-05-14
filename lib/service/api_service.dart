@@ -26,4 +26,22 @@ class AppService {
     }
     return [];
   }
+
+  static Future<List<Articles>> fetchNews(String title) async {
+    try {
+      final url = '${ApiConstants.base_url}?country=us&category=$title&apiKey=${ApiConstants.api_key}';
+      final response = await http.get(Uri.parse(url));
+
+      if(response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        final List article = data['articles'];
+        return article.map((e)=> Articles.fromJson(e)).toList();
+      }else {
+        print('failed to fetch data');
+      }
+    }catch(e) {
+      print('Error occurred $e}');
+    }
+    return [];
+  }
 }

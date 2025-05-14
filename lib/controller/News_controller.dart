@@ -7,6 +7,7 @@ class NewsController extends GetxController {
 
   RxBool isLoading = false.obs;
   RxList<Articles> articleList = <Articles>[].obs;
+  var selectedCategory = ''.obs;
 
   @override
   void onInit() {
@@ -20,6 +21,17 @@ class NewsController extends GetxController {
       var articles = await AppService.fetchHeadLines();
       articleList.value = articles;
         }finally {
+      isLoading.value = false;
+    }
+  }
+
+  Future<void> FetchNewsCategory(String title) async {
+    try {
+      isLoading.value = true;
+      articleList.clear();
+      var articles = await AppService.fetchNews(title);
+      articleList.value = articles;
+    }finally {
       isLoading.value = false;
     }
   }

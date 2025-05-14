@@ -56,15 +56,18 @@ class HomePage extends StatelessWidget {
                         article.urlToImage != null
                             ? ClipRRect(
                               borderRadius: BorderRadius.circular(15),
-                              child: Image.network(
-                                alignment: Alignment.topCenter,
-                                article.urlToImage!,
-                                width: double.infinity,
-                                height: size.height * .2,
-                                fit: BoxFit.cover,
-                                errorBuilder:
-                                    (_, _, _) =>
-                                        Center(child: Icon(Icons.broken_image)),
+                              child: Opacity(
+                                opacity: 0.5,
+                                child: Image.network(
+                                  alignment: Alignment.topCenter,
+                                  article.urlToImage!,
+                                  width: double.infinity,
+                                  height: size.height * .2,
+                                  fit: BoxFit.cover,
+                                  errorBuilder:
+                                      (_, _, _) =>
+                                          Center(child: Icon(Icons.broken_image)),
+                                ),
                               ),
                             )
                             : Container(
@@ -100,7 +103,7 @@ class HomePage extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
-                                color: Colors.white,
+                                color: Colors.black,
                               ),
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
