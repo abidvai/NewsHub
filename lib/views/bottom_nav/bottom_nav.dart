@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:news_flash/controller/bottomNav_controller.dart';
 import 'package:news_flash/views/favourite_page.dart';
-import 'package:news_flash/views/home_page.dart';
+import 'package:news_flash/views/home_page/home_page.dart';
 import 'package:news_flash/views/profile_page.dart';
 
 
